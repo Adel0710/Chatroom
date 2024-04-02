@@ -3,11 +3,20 @@ const { createServer } = require('node:http');
 
 const app = express();
 const server = createServer(app);
-const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res)  {
-  res.sendFile(path.join(__dirname, '/views/index.html'));
+// app.get('/', function (req, res)  {
+//   res.send('accueil');
+// });
+app.use(express.static(__dirname + '/public'));
+app.get('/', function(req, res) {
+  res.sendFile('views/index.html', {root: __dirname })
+});
+
+app.get("/register", function (req, res) {
+  res.sendFile(__dirname + "/views/register.html");
+});
+app.get("/login", function (req, res) {
+  res.sendFile(__dirname + "/views/login.html");
 });
 
 app.get('/channels', function (req, res) {
@@ -30,3 +39,4 @@ app.get((req, res, next) => {
 });
 
 module.exports = express;
+
