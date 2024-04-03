@@ -4,16 +4,27 @@ const { createServer } = require('node:http');
 const app = express();
 const server = createServer(app);
 
-app.get('/views', function (req, res)  {
-  res.send('accueil');
+// app.get('/', function (req, res)  {
+//   res.send('accueil');
+// });
+app.use(express.static(__dirname + '/public'));
+app.get('/', function(req, res) {
+  res.sendFile('views/index.html', {root: __dirname })
 });
 
-app.get('/views/channels', function (req, res) {
+app.get("/register", function (req, res) {
+  res.sendFile(__dirname + "/views/register.html");
+});
+app.get("/login", function (req, res) {
+  res.sendFile(__dirname + "/views/login.html");
+});
+
+app.get('/channels', function (req, res) {
     res.send('bienvenue sur le channels');
 
 });
 
-app.post('/views/message', function (req, res) {
+app.post('/message', function (req, res) {
     res.send('envoi de message.')
 })
 
@@ -28,3 +39,4 @@ app.get((req, res, next) => {
 });
 
 module.exports = express;
+
