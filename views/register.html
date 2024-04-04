@@ -7,6 +7,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="/static/css/style_log_reg.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -17,26 +18,26 @@
     </header>
 
     <div class="wrapper">
-        <form action="">
+        <form action="/registerForm" method="post">
             <h1>Register</h1>
             <div class="input-box-register">
-                <input type="text" placeholder="Full name">
+                <input type="text" placeholder="Full name" name="full-name">
                 <i class='bx bxs-id-card'></i>
             </div>
             <div class="input-box-register">
-                <input type="email" placeholder="Email">
+                <input type="email" placeholder="Email" name="email">
                 <i class='bx bx-envelope' ></i>
             </div>
             <div class="input-box-register">
-                <input type="text" placeholder="Username">
+                <input type="text" placeholder="Username" name="Username">
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box-register">
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" name="password">
                 <i class='bx bxs-lock'></i>
             </div>
             <div class="input-box-register">
-                <input type="password" placeholder="Confirm password">
+                <input type="password" placeholder="Confirm password" name="Confirm-password">
                 <i class='bx bxs-lock'></i>
             </div>
             <div class="button">
