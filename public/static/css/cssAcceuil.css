@@ -2,6 +2,9 @@
     padding: 0;
     margin: 0;
 }
+a{
+    text-decoration: none;
+}
 
 /* header */
 header{
@@ -32,6 +35,12 @@ button{
 button:hover{
     background-color: #F9E8C9;
     border: 1px solid #1C4B60;
+    color: #1C4B60;
+}
+button a{
+    color: #F9E8C9;
+}
+button a:hover{
     color: #1C4B60;
 }
 #overlay,#overlay1{
