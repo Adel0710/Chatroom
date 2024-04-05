@@ -2,6 +2,7 @@ import express from "express";
 import http from 'http';
 import bodyParser from "body-parser";
 import checkLoginData from "./controller/user/UserController";
+import registerController from "./controller/user/RegisterController";
 
 const app = express();
 const server = http.createServer(app);
@@ -25,24 +26,30 @@ app.get("/login", function (req, res) {
   res.sendFile(__dirname + "/views/login.html");
 });
 app.get("/profil", function (req, res) {
-  // res.sendFile(__dirname + "/views/profil.html");
+  res.sendFile(__dirname + "/views/profil.html");
   // console.log(req.session);
   
   // res.send(`Hello ${req}`)
+  // const sessionData = req.session;
 });
-app.post("/registerForm",function (req,res) {
-  const username = req.body.username;
-  const password = req.body.password;
+app.post("/registerForm",function (req,res) {  
+  const username = req.body.username;  
+  const password = req.body.password;  
+  const firstName = req.body.firstNname;  
+  const lastName = req.body.lastName;  
+  const email = req.body.email;  
+  if (username && password && firstName && lastName && email) {
+    console.log('good1');
+    registerController(username ,password ,firstName ,lastName ,email,res);
+  }
 })
 
 app.post("/loginForm",function (req,res) {
-  try {
-    const username = req.body.username;
-    const password = req.body.password;
-    checkLoginData(username,password,res,req)
-  } catch (error) {
-    console.log(error);
-    
+  // console.log(req);
+  const username = req.body.username;
+  const password = req.body.password;
+  if (username && password) {
+    checkLoginData(username,password,res);
   }
 })
 
@@ -57,8 +64,8 @@ app.post('/message', function (req, res) {
 })
 
 
-server.listen(3000, () => {
-  console.log('server running at http://localhost:3000');
+server.listen(8081, () => {
+  console.log('server running at http://localhost:8081');
 });
 
 

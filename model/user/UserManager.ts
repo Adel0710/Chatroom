@@ -1,25 +1,16 @@
 import {pool} from '../dbConnect'
-import expressSession,{ SessionData } from 'express-session'
-
-declare module 'express-session' {
-    interface SessionData {
-        user?: { id: number, username: string , prenom: string};
-    }
-}
-export default function getInfoUser (username:string,req: any) {
-    pool.query('SELECT * FROM users where login = ?',username, (err,results: any) =>{
+export default function getInfoUser (username:string) {
+    let infoUser;
+    let queryRequete = 'SELECT * FROM users where login = ?';
+    pool.query( queryRequete ,username, (err,results: any) => {
         if (err) {
             return console.log(err);
         }
-
-        
-        req.session = {
-            id : results[0].id ,
-            username : results[0].login,
-            prenom : results[0].prenom 
-        }
-        console.log(req.session.username);
-        
-        return results[0].id; 
-    })
-}
+        // infoUser = results[0]
+        console.log(results[0]);
+        return results[0] ; 
+    })    
+    // console.log(result[]);
+    
+    return infoUser;
+} 
