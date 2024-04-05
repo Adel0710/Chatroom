@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<body>
+
+    <style>
+        :root {
+            --body-color:#E4E9F7;
+            --sidebar-color:#fff
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background:green;
+        }
+
+        .logo img {
+            width: 70px;
+            border-radius: 50%;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+            background:red;
+            display: flex;
+            align-self: center;
+            flex-direction: column;   
+        }
+        .sidebar .logo{
+            display: flex;
+            align-items: center;
+            padding: 25px 10px 15px;
+            justify-content: center;
+        }
+
+        .sidebar .log_right li {
+            display: flex;
+            align-items: center;  
+        }
+        .sidebar li:hover {
+            background: white;
+        }
+        .sidebar li span {
+            padding: 12px 10px;
+        }
+        .sidebar ul li {
+            width: 100%;
+        }
+        .sidebar li a {
+            color: #000;
+            padding: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+            text-decoration: none;
+        }  
+    </style>
+
+    <nav class="sidebar">
+        <header>
+                <div class="logo">
+                    <img src="logo_white.png" alt="">
+                    
+                </div>
+            
+            <div class="log_right">
+
+                <ul class="menu-icons">
+                    <li>
+                        <a href="#">
+                            <ion-icon name="grid-outline"></ion-icon>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="text nav-text">Profil</span>
+                        </a>
+                    </li>
+                    <li>  
+                        <a href="#">
+                            <ion-icon name="log-in-outline"></ion-icon>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>   
+    </nav>
+
+</body>
+
+</html>
