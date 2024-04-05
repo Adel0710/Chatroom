@@ -105,7 +105,7 @@ nav{
 }
 h1{
     color: #F9E8C9;
-    font-size: 5rem;
+    font-size: 3rem;
     text-transform: capitalize;
     letter-spacing: 1rem;
 }
@@ -127,7 +127,7 @@ span {
 h2{
     color: #1C4B60;
     padding: 3rem 0;
-    font-size: 3rem;
+    font-size: 2rem;
     letter-spacing: 10px;
     text-transform: uppercase;
 }
