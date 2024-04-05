@@ -1,8 +1,27 @@
 import getInfoUser from "../../model/user/UserManager";
-export default function checkLoginData(username:string,password:any,res: any,req:any) {
+import {pool} from '../../model/dbConnect'
+
+export default function checkLoginData(username:string,password:any,res: any) {
+    console.log(username);
+    console.log(password);
+    
     if (username && password) {
-        getInfoUser(username,req)
-        res.redirect('/profil')
+        let infoUser;
+        let queryRequete = 'SELECT * FROM users where login = ?';
+        pool.query( queryRequete ,username, (err,results: any) => {
+            if (err) {
+                return console.log(err);
+            }
+            infoUser = results[0]
+            console.log(infoUser);
+            
+            if (infoUser.mdp === password) {
+                res.redirect('/profil')
+                console.log('bienvenu sur votre profil');
+                
+            }
+        })
+        
     } else {
         console.log('username or password missing');
     }

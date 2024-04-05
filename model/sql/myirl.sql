@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 30 mars 2024 à 10:02
+-- Généré le : jeu. 04 avr. 2024 à 13:14
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `myirl`
+-- Base de données : `myirl1`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,13 @@ CREATE TABLE `channels` (
   `nom_channel` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `channels`
+--
+
+INSERT INTO `channels` (`id`, `role`, `user_id_channel`, `nom_channel`) VALUES
+(1, 'creator', 1, 'channelTest');
+
 -- --------------------------------------------------------
 
 --
@@ -43,9 +50,16 @@ CREATE TABLE `channels` (
 CREATE TABLE `messages` (
   `id` int(11) NOT NULL,
   `message` varchar(255) DEFAULT NULL,
-  `send` datetime DEFAULT NULL,
+  `send` date DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `message`, `send`, `user_id`) VALUES
+(1, 'testMessage', '2024-04-04', 1);
 
 -- --------------------------------------------------------
 
@@ -62,6 +76,13 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `date_inscription` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `nom`, `prenom`, `login`, `mdp`, `email`, `date_inscription`) VALUES
+(1, 'nomTest', 'prenomTest', 'loginTest', 'mdpTest', 'emailTest', '2024-04-04');
 
 --
 -- Index pour les tables déchargées
@@ -95,13 +116,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `channels`
 --
 ALTER TABLE `channels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
