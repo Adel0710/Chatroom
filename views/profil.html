@@ -9,7 +9,19 @@
 
 </head>
 <body>
-    <h1>Bienvenue dans l'équipage du heart</h1>
+    <script>
+
+
+    // Set Item
+    localStorage.setItem("lastname", "Smith");
+    // Retrieve
+    document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+    </script>
+    <h1>Bienvenue dans l'équipage du <span>heart</span></h1>
     <img src="/static/images/embleme.jpg" alt="">
+    <div>
+        <p>vous pouvez acceder au salon de l'équipage <a href="/message">ici</a></p>
+    </div>
+    <img src="/static/images/trafal.jpg" alt="" class="trafal">
 </body>
 </html>

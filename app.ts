@@ -5,6 +5,10 @@ import checkLoginData from "./controller/user/UserController";
 import registerController from "./controller/user/RegisterController";
 import { Server } from "socket.io";
 
+
+var LocalStorage;
+var localStorage;
+
 const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer);
@@ -16,7 +20,13 @@ app.use(jsonParser);
 app.use(urlEncodeParser);
 
 app.use(express.static(__dirname + '/public'));
+if (typeof localStorage === "undefined" || localStorage === null) {
+  LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 
+localStorage.setItem('myFirstKey', 'myFirstValue');
+console.log(localStorage.getItem('myFirstKey'))
 app.get('/', function(req, res) {
   res.sendFile('views/index.html', {root: __dirname })
 });
