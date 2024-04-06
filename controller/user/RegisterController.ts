@@ -1,12 +1,8 @@
 import { pool } from '../../model/dbConnect'
 import bcrypt from 'bcrypt'
 
-export default async function registerController(username: any,password: any,firstName: string,lastName: string,email: any,res:any) {
-    console.log('good2');
-    
-    try {
-        console.log('good3');
-        
+export default async function registerController(username: any,password: any,firstName: string,lastName: string,email: any,res:any) {        
+    try {        
         console.log(username, password, firstName, lastName, email);
         
         const hashedPassword = await bcrypt.hash(password, 10);

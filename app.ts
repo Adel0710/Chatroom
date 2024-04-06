@@ -3,9 +3,11 @@ import http from 'http';
 import bodyParser from "body-parser";
 import checkLoginData from "./controller/user/UserController";
 import registerController from "./controller/user/RegisterController";
+import { Server } from "socket.io";
 
 const app = express();
-const server = http.createServer(app);
+const httpServer = http.createServer(app);
+const io = new Server(httpServer);
 
 const jsonParser = bodyParser.json();
 const urlEncodeParser = bodyParser.urlencoded({extended : true})
@@ -27,20 +29,31 @@ app.get("/login", function (req, res) {
 });
 app.get("/profil", function (req, res) {
   res.sendFile(__dirname + "/views/profil.html");
-  // console.log(req.session);
-  
-  // res.send(`Hello ${req}`)
-  // const sessionData = req.session;
 });
 app.post("/registerForm",function (req,res) {  
+  console.log('good0');
+  
   const username = req.body.username;  
+  console.log(username);
+  
   const password = req.body.password;  
-  const firstName = req.body.firstNname;  
+  console.log(password);
+  
+  const firstName = req.body.firstNname; 
+  console.log(firstName);
+   
   const lastName = req.body.lastName;  
+  console.log(lastName);
+  
   const email = req.body.email;  
+  console.log(email);
+  
   if (username && password && firstName && lastName && email) {
     console.log('good1');
     registerController(username ,password ,firstName ,lastName ,email,res);
+  }else {
+    console.log("username or password missing");
+    res.send("username or password is missing");
   }
 })
 
@@ -58,14 +71,26 @@ app.get('/channels', function (req, res) {
   res.send('bienvenue sur le channels');
 });
 
-app.post('/message', function (req, res) {
+app.get('/message', function (req, res) {
   // res.send('envoi de message.')
   res.sendFile(__dirname + "/views/message.html");
 })
+//  socket.io chat by adel
+io.on("connection", (socket) => {
+  console.log("a user connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+});
+io.on("connection", (socket) => {
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
+});
 
 
-server.listen(8081, () => {
-  console.log('server running at http://localhost:8081');
+httpServer.listen(8000, () => {
+  console.log('server running at http://localhost:8000');
 });
 
 

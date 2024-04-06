@@ -22,6 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 30px;
 }
 
 .wrapper {
@@ -183,4 +184,51 @@ body {
 .wrapper .btn:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border: 1px solid transparent;
+}
+
+/* register password checklist */
+/* .passwordy{
+    position: relative;
+} */
+.password-checklist{
+    /* position: absolute; */
+    top: calc(100% + 10px);
+    background: #91b88e;
+    padding: 20px 30px;
+    border-radius: 3px;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+    /* visibility: hidden; */
+}
+
+.passwordInput:focus .password-checklist{
+    /* visibility: visible; */
+}
+.checkList-title{
+    font-size: 15px;
+    margin-bottom: 10px;
+    
+}
+
+.checkList{
+    list-style-type: none;
+}
+.list-item{
+    padding-left: 10px;
+    /* color:white; */
+    font-size: 14px;
+}
+.list-item::before{
+    content: '\f00d';
+    font-family: FontAwesome;
+    font-weight: 100;
+    padding-right: 5px;
+    display: inline-block;
+    margin: 5px 0;
+}
+.list-item.checked{
+    opacity: 0.5;
+}
+.list-item.checked::before{
+    content: '\f00c';
 }
