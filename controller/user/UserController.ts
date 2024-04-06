@@ -1,5 +1,6 @@
 import getInfoUser from "../../model/user/UserManager";
 import {pool} from '../../model/dbConnect'
+import bcrypt from 'bcrypt'
 
 export default function checkLoginData(username:string,password:any,res: any) {
     console.log(username);
@@ -14,12 +15,11 @@ export default function checkLoginData(username:string,password:any,res: any) {
             }
             infoUser = results[0]
             console.log(infoUser);
-            
-            if (infoUser.mdp === password) {
+            bcrypt.compare(password, infoUser.mdp, function(err, result) {
+                console.log('true');
                 res.redirect('/profil')
                 console.log('bienvenu sur votre profil');
-                
-            }
+            });
         })
         
     } else {
