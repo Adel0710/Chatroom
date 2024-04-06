@@ -5,10 +5,18 @@
 body{
     text-align: center;
     color: #1C4B60;
+    padding: 20px;
 }
 span{
     color: #F9E8C9;
 }
 img{
-    width: 30rem;
+    width: 20rem;
+    margin-top: 1rem;
+}
+.trafal{
+    width: 15rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
