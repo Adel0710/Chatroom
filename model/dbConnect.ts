@@ -1,10 +1,10 @@
 import mysql from 'mysql2'
-import { config } from './config';
+// import { config } from './config';
 
-export const pool = mysql.createPool({
-    host: config.host,
-    user: config.user,
-    password:config.password,
-    database:config.database
+export const db = mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    password:'Cocobon94',
+    database:'myirl'
 })
 

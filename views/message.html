@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
 </head>
 
-<body>
+<body id="logged-out">
     <header>
         <div class="container-fluid yellow">
             <!-- Contenu de l'en-tête -->
@@ -89,13 +89,46 @@
             </ul>
         </div>
     </div>
-
+<section id="chat">
     <ul id="messages"></ul>
-    <form id="form" action="">
-        <input class="button" id="input" autocomplete="off" /><button>Send</button>
-    </form>
+    <form id="form">
+        <input id="input" autocomplete="off" /><input type="submit" value="Send"/>
+    </form> 
+</section>
+    
+    
 
     <script src="bootstrap.min.js"></script>
+    
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+            // const io = new Server(server, {
+            //     connectionStateRecovery: {}
+            // });
+
+            const form = document.getElementById('form');
+            const input = document.getElementById('input');
+            const messages = document.getElementById('messages');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (input.value) {
+                    socket.emit('chat message', input.value);
+                    input.value = '';
+                }
+            });
+            socket.on('chat message', (mssg) => {
+                const item = document.createElement('li');
+                item.textContent = mssg;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        
+
+    </script>   
+      
 </body>
 <script src="../app.js"></script>
 </html>
